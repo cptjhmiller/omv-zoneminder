@@ -3,6 +3,7 @@
 set -e
 
 if [ "$1" = "configure" ]; then
+    cpan install URI::Escape >/dev/null 2>&1
 	if [ -e "/etc/init.d/mysql" ]; then 
 		#
 		# Get mysql started if it isn't
