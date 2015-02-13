@@ -3,7 +3,8 @@ omv-zoneminder
 
     cd /tmp
     git clone https://github.com/ZoneMinder/ZoneMinder.git
-    apt-get install autoconf automake dpatch libphp-serialization-perl libgnutls-dev libmysqlclient-dev libdbd-mysql-perl libdate-manip-perl libwww-perl libjpeg8-dev libpcre3-dev libavcodec-dev libavformat-dev libswscale-dev libavutil-dev libv4l-dev libbz2-dev libtool libsys-mmap-perl libav-tools libnetpbm10-dev libavdevice-dev libdevice-serialport-perl libpcre3 libarchive-zip-perl libmime-lite-perl libjpeg8 dh-autoreconf libvlccore-dev libvlc-dev libcurl4-openssl-dev libgcrypt11-dev libfile-fcntllock-perl git-core build-essential libpolkit-gobject-1-dev
+    apt-get install autoconf automake dpatch libphp-serialization-perl libgnutls-dev libmysqlclient-dev libdbd-mysql-perl libdate-manip-perl libwww-perl libjpeg8-dev libpcre3-dev libavcodec-dev libavformat-dev libswscale-dev libavutil-dev libv4l-dev libbz2-dev libtool libsys-mmap-perl libav-tools libnetpbm10-dev libavdevice-dev libdevice-serialport-perl libpcre3 libarchive-zip-perl libmime-lite-perl libjpeg8 dh-autoreconf libvlccore-dev libvlc-dev libcurl4-openssl-dev libgcrypt11-dev libfile-fcntllock-perl git-core build-essential libpolkit-gobject-1-dev libmailtools-perl librrds-perl libnet-sftp-foreign-perl libexpect-perl quilt diffstat libio-pty-perl libio-stty-perl
+
 
 #check if newer version exists 
 
@@ -13,9 +14,7 @@ omv-zoneminder
 # Install perl modules
 
     perl -MCPAN -e shell
-    install CPAN
     install Date::Manip
-    install LWP::UserAgent
     install Sys::Mmap
     install Device::SerialPort
     install Net::FTP
@@ -23,9 +22,13 @@ omv-zoneminder
     install Archive::Tar
     install Archive::Zip
     install Net::SMTP
+    install MIME::Types
+    install Mail::Address
     install MIME::Lite
     install MIME::Entity
     install X10::ActiveHome
+    install LWP::UserAgent
+    install CPAN
     exit
     cd ZoneMinder
     git clone https://github.com/cptjhmiller/omv-zoneminder.git /tmp/ZoneMinder/debian
