@@ -34,7 +34,7 @@ omv-zoneminder
     install CPAN
     exit
     cd /zoneminder/ZoneMinder
-    git clone https://github.com/cptjhmiller/omv-zoneminder.git cd /zoneminder/ZoneMinder/debian
+    git clone https://github.com/cptjhmiller/omv-zoneminder.git /zoneminder/ZoneMinder/debian
     dpkg-checkbuilddeps
 #apt-get any missing packages
 
