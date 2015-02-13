@@ -16,7 +16,7 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 CFLAGS = -Wall -g
 CPPFLAGS = -D__STDC_CONSTANT_MACROS
-CXXFLAGS = -DHAVE_LIBCRYPTO
+CXXFLAGS = -DHAVE_LIBCRYPTO -I/opt/libjpeg-turbo/include -L/opt/libjpeg-turbo/lib64
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -O0
@@ -64,4 +64,7 @@ override_dh_auto_test:
 .PHONY: override_dh_strip
 override_dh_strip:
 		dh_strip --dbg-package=zoneminder-dbg
+
+override_dh_shlibdeps:
+    dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info
 
