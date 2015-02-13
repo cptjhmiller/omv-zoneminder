@@ -10,7 +10,7 @@ omv-zoneminder
     wget --trust-server-names http://sourceforge.net/projects/libjpeg-turbo/files/1.3.90%20%281.4%20beta1%29/libjpeg-turbo-official_1.3.90_amd64.deb/download
     dpkg -i libjpeg-turbo-official_1.3.90_amd64.deb
 
-# Imstall perl modules
+# Install perl modules
 
     perl -MCPAN -e shell
     install CPAN
