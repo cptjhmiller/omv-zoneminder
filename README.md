@@ -40,4 +40,4 @@ omv-zoneminder
 
 #build the package
 
-    dpkg-buildpackage
+    dpkg-buildpackage -uc -us
