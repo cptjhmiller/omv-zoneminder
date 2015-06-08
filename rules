@@ -7,6 +7,8 @@ export CFLAGS = -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -pip
 export CXXFLAGS = -DHAVE_LIBCRYPTO -I/opt/libjpeg-turbo/include -L/opt/libjpeg-turbo/lib64 -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -pipe
 INSTDIR = debian/tmp
 
+#-DZM_PERL_SUBPREFIX=/share/perl5
+
 override_dh_auto_configure:
 	dh_auto_configure -- \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -23,7 +25,6 @@ override_dh_auto_configure:
 		-DZM_WEB_USER=www-data \
 		-DZM_WEB_GROUP=www-data \
 		-DZM_PERL_SUBPREFIX=/usr/lib/perl5 \
-		#-DZM_PERL_SUBPREFIX=/share/perl5 \
 		-DCMAKE_INSTALL_SYSCONFDIR=etc/zm
 
 override_dh_auto_install:
