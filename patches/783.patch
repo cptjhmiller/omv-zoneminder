@@ -4,8 +4,8 @@ Bug-Upstream: https://github.com/ZoneMinder/ZoneMinder/issues/783
 From: Andrew Bauer <knnniggett@hotmail.com>
 Description: update ZM_USE_DEEP_STORAGE to warn about loss of data.
 
---- a/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
+--- scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
++++ scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
 @@ -164,9 +164,9 @@
  	{
  		name => "ZM_USE_DEEP_STORAGE",
