@@ -4,8 +4,8 @@ Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: fixing POD errors
  manpage-has-errors-from-pod2man (forgotten '=back' before '=head2')
 
---- a/scripts/ZoneMinder/lib/ZoneMinder/ConfigAdmin.pm
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/ConfigAdmin.pm
+--- scripts/ZoneMinder/lib/ZoneMinder/ConfigAdmin.pm
++++ scripts/ZoneMinder/lib/ZoneMinder/ConfigAdmin.pm
 @@ -194,8 +194,10 @@
  =item saveConfigToDB ();
  
@@ -17,8 +17,8 @@ Description: fixing POD errors
  
  None by default.
  The :data tag will export the various configuration data structures
---- a/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
+--- scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
++++ scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
 @@ -1987,8 +1987,10 @@
  =item saveConfigToDB ();
  
@@ -30,8 +30,8 @@ Description: fixing POD errors
  
  None by default.
  The :data tag will export the various configuration data structures
---- a/scripts/ZoneMinder/lib/ZoneMinder/Logger.pm
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/Logger.pm
+--- scripts/ZoneMinder/lib/ZoneMinder/Logger.pm
++++ scripts/ZoneMinder/lib/ZoneMinder/Logger.pm
 @@ -826,8 +826,10 @@
  =item Panic( $string );
  
@@ -43,8 +43,8 @@ Description: fixing POD errors
  
  None by default.
  The :constants tag will export the debug constants which define the various levels of debug
---- a/scripts/ZoneMinder/lib/ZoneMinder/Memory.pm.in
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/Memory.pm.in
+--- scripts/ZoneMinder/lib/ZoneMinder/Memory.pm.in
++++ scripts/ZoneMinder/lib/ZoneMinder/Memory.pm.in
 @@ -732,12 +732,12 @@
  The core elements of ZoneMinder used mapped memory to allow multiple access to resources. Although ZoneMinder scripts have used this information before, up until now it was difficult to access and prone to errors. This module introduces a common API for mapped memory access (both reading and writing) making it a lot easier to customise scripts or even create your own.
  
