@@ -16,16 +16,3 @@ Description: change default date format to region-neutral ISO notation with time
          'LabelY' => 0,
          'ImageBufferCount' => 50,
          'WarmupCount' => 25,
---- web/skins/flat/views/monitor.php
-+++ web/skins/flat/views/monitor.php
-@@ -69,9 +69,9 @@
-         'Width' => "320",
-         'Height' => "240",
-         'Orientation' => "0",
-         'Deinterlacing' => 0,
--        'LabelFormat' => '%N - %d/%m/%y %H:%M:%S',
-+        'LabelFormat' => '%N - %Y-%m-%d %H:%M:%S %z',
-         'LabelX' => 0,
-         'LabelY' => 0,
-         'ImageBufferCount' => 50,
-         'WarmupCount' => 25,

@@ -1,26 +1,19 @@
-Last-Update: 2015-03-29
-Forwarded: no
-Bug-Upstream: https://github.com/ZoneMinder/ZoneMinder/issues/769
-Author: Dmitry Smirnov <onlyjob@member.fsf.org>
-Description: fix Perl modules' location
-
---- scripts/ZoneMinder/CMakeLists.txt
-+++ scripts/ZoneMinder/CMakeLists.txt
-@@ -23,11 +23,16 @@
- 	set(MAKEMAKER_NOECHO_COMMAND "NOECHO=\"1>/dev/null\"")
+--- scripts/ZoneMinder/CMakeLists.txt	2015-06-21 19:33:11.882930369 +0100
++++ scripts/ZoneMinder/CMakeLists_new.txt	2015-06-21 19:54:25.382942846 +0100
+@@ -24,10 +24,15 @@
  endif(CMAKE_VERBOSE_MAKEFILE)
  
  # Add build target for the perl modules
--add_custom_target(zmperlmodules ALL perl Makefile.PL FIRST_MAKEFILE=MakefilePerl PREFIX="${CMAKE_CURRENT_BINARY_DIR}/output" LIB="${CMAKE_CURRENT_BINARY_DIR}/output/${ZM_PERL_SUBPREFIX}" INSTALLSITEMAN3DIR="${CMAKE_CURRENT_BINARY_DIR}/output/${CMAKE_INSTALL_MANDIR}/man3" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make --makefile=MakefilePerl COMMAND make --makefile=MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
+-add_custom_target(zmperlmodules ALL perl Makefile.PL ${ZM_PERL_MM_PARMS} FIRST_MAKEFILE=MakefilePerl DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output" ${MAKEMAKER_NOECHO_COMMAND} COMMAND make --makefile=MakefilePerl pure_install COMMENT "Building ZoneMinder perl modules")
 +add_custom_target(zmperlmodules ALL perl Makefile.PL FIRST_MAKEFILE=MakefilePerl
 + PREFIX="/usr" LIB="/usr/share/perl5" INSTALLSITEMAN3DIR="/usr/${CMAKE_INSTALL_MANDIR}/man3"
 + ${MAKEMAKER_NOECHO_COMMAND} COMMAND make --makefile=MakefilePerl
 + COMMAND make --makefile=MakefilePerl pure_install
-+    DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output"
++ DESTDIR="${CMAKE_CURRENT_BINARY_DIR}/output"
 + COMMENT "Building ZoneMinder perl modules")
  
  # Add install target for the perl modules
--install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "${CMAKE_INSTALL_PREFIX}")
+-install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/" DESTINATION "/")
 +install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/output/usr/" DESTINATION "${CMAKE_INSTALL_PREFIX}")
  
  # Add additional files and directories to make clean
