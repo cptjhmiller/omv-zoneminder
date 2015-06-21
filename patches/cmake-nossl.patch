@@ -1,0 +1,18 @@
+Last-Update: 2015-03-29
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Description: disable OpenSSL detection
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -157,9 +157,9 @@
+ 	message(FATAL_ERROR "zm requires jpeg but it was not found on your system")
+ endif(JPEG_FOUND)
+ 
+ # OpenSSL
+-find_package(OpenSSL)
++#find_package(OpenSSL)
+ if(OPENSSL_FOUND)
+ 	set(HAVE_LIBOPENSSL 1)
+ 	set(HAVE_LIBCRYPTO 1)
+ 	list(APPEND ZM_BIN_LIBS "${OPENSSL_LIBRARIES}")

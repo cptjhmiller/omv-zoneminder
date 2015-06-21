@@ -1,0 +1,4 @@
+perl:Depends=perl
+misc:Depends=init-system-helpers (>= 1.18~), libjs-mootools (>= 1.4.5~debian1)
+shlibs:Depends=libavcodec53 (>= 6:0.8.3-1~) | libavcodec-extra-53 (>= 6:0.8.17), libavformat53 (>= 6:0.8.3-1~), libavutil51 (>= 6:0.8.3-1~), libc6 (>= 2.11), libcurl3-gnutls (>= 7.16.2), libgcc1 (>= 1:4.1.1), libjpeg8 (>= 8c), libmysqlclient18.1, libpcre3 (>= 8.10), libssl1.0.0 (>= 1.0.0), libstdc++6 (>= 4.2.1), libswscale2 (>= 6:0.8.3-1~), libvlc5 (>= 1.1.1), zlib1g (>= 1:1.1.4)
+misc:Pre-Depends=dpkg (>= 1.15.7.2)

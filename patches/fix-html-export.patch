@@ -1,0 +1,84 @@
+Last-Update: 2015-04-04
+Forwarded: https://github.com/ZoneMinder/ZoneMinder/pull/782
+Applied-Upstream: https://github.com/ZoneMinder/ZoneMinder/commit/d1f00f02c2770c0fec1280af45b804fc47b6f82f
+Bug-Ubuntu: https://launchpad.net/bugs/1176128
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=723706
+Bug-Upstream: https://github.com/ZoneMinder/ZoneMinder/issues/506
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Description: fix HTML export with USE_DEEP_STORAGE.
+
+--- a/web/skins/classic/includes/export_functions.php
++++ b/web/skins/classic/includes/export_functions.php
+@@ -180,9 +180,9 @@
+         </tr>
+ <?php
+     if ( count($frames) )
+     {
+-        $eventPath = mygetEventPath( $event );
++        $eventPath = ZM_DIR_EVENTS.'/'.mygetEventPath( $event );
+         foreach ( $frames as $frame )
+         {
+             $imageFile = sprintf( "%0".ZM_EVENT_IMAGE_DIGITS."d-capture.jpg", $frame['FrameId'] );
+             $imagePath = $eventPath."/".$imageFile;
+@@ -599,11 +599,15 @@
+ <h2><?= $SLANG['Images'] ?> Master</h2>
+ <?php
+ 	foreach ($eids as $eid) {
+ 		//get monitor id and event id
+-		$sql = 'SELECT E.MonitorId FROM Monitors AS M INNER JOIN Events AS E ON (M.Id = E.MonitorId) WHERE E.Id = ?';
++		$sql = 'SELECT E.MonitorId, E.StartTime, E.Id
++			FROM Monitors AS M INNER JOIN Events AS E ON (M.Id = E.MonitorId)
++			WHERE E.Id = ?
++		';
+ 		$event = dbFetchOne( $sql, NULL, array( $eid ) );
+ 		$eventMonitorId[$eid] = $event['MonitorId'];
++		$eventPath[$eid] = mygetEventPath( $event );
+ 	}
+ 	
+ 	$monitors = array_values(array_flip(array_flip($eventMonitorId))); //unique monitors and reindex the array
+ 	$monitorNames = array();
+@@ -643,9 +647,9 @@
+ 	?>
+ 	<?php foreach($eids as $eid) 
+ 	{
+ 	?>
+-		<div><a href="javascript:switchevent('<?php echo   $eventMonitorId[$eid].'/' . $eid; ?>/zmEventImages.html');"><?=$eid?></a></div>
++		<div><a href="javascript:switchevent('<?php echo   $eventPath[$eid]; ?>/zmEventImages.html');"><?=$eid?></a></div>
+ 		<?php
+ 	} 
+ 	?>
+ 	</div>
+@@ -659,9 +663,9 @@
+ 			{
+ 				if ($eventMonitorId[$eid] == $monitor)
+ 				{
+ 				?>	
+-				<div><a href="javascript:switchevent('<?php echo   $eventMonitorId[$eid].'/' . $eid; ?>/zmEventImages.html');"><?=$eid?></a></div>	
++				<div><a href="javascript:switchevent('<?php echo   $eventPath[$eid]; ?>/zmEventImages.html');"><?=$eid?></a></div>
+ 				<?php
+ 				}
+ 			}
+ 			echo'</div>';
+@@ -762,9 +766,9 @@
+     if ( canView( 'Events' ) && $eid )
+     {
+         $sql = 'SELECT E.Id,E.MonitorId,M.Name AS MonitorName,M.Width,M.Height,E.Name,E.Cause,E.Notes,E.StartTime,E.Length,E.Frames,E.AlarmFrames,E.TotScore,E.AvgScore,E.MaxScore,E.Archived FROM Monitors AS M INNER JOIN Events AS E ON (M.Id = E.MonitorId) WHERE E.Id = ?';
+         $event = dbFetchOne( $sql, NULL, array( $eid ) );
+-		$eventPath =  mygetEventPath( $event );
++		$eventPath =  ZM_DIR_EVENTS.'/'.mygetEventPath( $event );
+         $files = array();
+         if ( $dir = opendir( $eventPath ) )
+         {
+             while ( ($file = readdir( $dir )) !== false )
+@@ -955,9 +959,9 @@
+ }
+ function mygetEventPath( $event )
+ {
+     if ( ZM_USE_DEEP_STORAGE )
+-        $eventPath = ZM_DIR_EVENTS.'/'.$event['MonitorId'].'/'.strftime( "%y/%m/%d/%H/%M/%S", strtotime($event['StartTime']) );
++        $eventPath = $event['MonitorId'].'/'.strftime( "%y/%m/%d/%H/%M/%S", strtotime($event['StartTime']) );
+     else
+-        $eventPath = ZM_DIR_EVENTS.'/'.$event['MonitorId'].'/'.$event['Id'];
++        $eventPath = $event['MonitorId'].'/'.$event['Id'];
+     return( $eventPath );
+ }

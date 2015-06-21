@@ -1,0 +1,38 @@
+Last-Update: 2015-04-06
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Description: unlink installation docs.
+
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -3,18 +3,15 @@
+ 
+ .. toctree::
+    :hidden:
+ 
+-   installationguide/index
+    userguide/index
+    api
+    faq
+    contributing
+ 
+ Welcome to ZoneMinder's documentation, the following resources are available
+ 
+-:doc:`installationguide/index`
+-  Many distrubution repos only hold older versions of ZoneMinder, current versions contain many bug fixes and updated functionality. Instructions here for installing updated packages or compiling from source.
+ 
+ :doc:`userguide/index`
+   Guide to setting up ZoneMinder for the first time and detailed guides for using the ZoneMinder front end.
+ 
+--- a/docs/userguide/gettingstarted.rst
++++ b/docs/userguide/gettingstarted.rst
+@@ -1,8 +1,8 @@
+ Getting Started
+ ===============
+ 
+-Having followed the :doc:`/installationguide/index` for your distribution you should now be able to load the ZoneMinder web frontend. By default this will be with the Classic skin, below is an example of the page you should now see.
++After installation of Zoneminder you should now be able to load the ZoneMinder web frontend. By default this will be with the Classic skin, below is an example of the page you should now see.
+ 
+ To add cameras to the system you need to create a Monitor for each camera. Click 'Add New Monitor' to bring up the dialog.
+ 
+ [To be completed, removing tutorial style documentation from wiki documentation and putting first time user guide here]

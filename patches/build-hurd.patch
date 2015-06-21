@@ -1,0 +1,35 @@
+Last-Update: 2015-04-03
+Forwarded: https://github.com/ZoneMinder/ZoneMinder/pull/778
+Author: Dmitry Smirnov <onlyjob@member.fsf.org>
+Description: add PATH_MAX definitions (needed on GNU Hurd)
+
+--- a/src/zm_stream.h
++++ b/src/zm_stream.h
+@@ -25,8 +25,12 @@
+ 
+ #include "zm.h"
+ #include "zm_mpeg.h"
+ 
++#if !defined(PATH_MAX)
++#define PATH_MAX 1024
++#endif
++
+ class Monitor;
+ 
+ #define TV_2_FLOAT( tv ) ( double((tv).tv_sec) + (double((tv).tv_usec) / 1000000.0) )
+ 
+--- a/src/zm_file_camera.h
++++ b/src/zm_file_camera.h
+@@ -25,8 +25,12 @@
+ #include "zm_regexp.h"
+ 
+ #include <sys/param.h>
+ 
++#if !defined(PATH_MAX)
++#define PATH_MAX 1024
++#endif
++
+ //
+ // Class representing 'file' cameras, i.e. those which are
+ // accessed using a single file which contains the latest jpeg data
+ //
