@@ -4,8 +4,8 @@ Bug-Debian: http://bugs.debian.org/585590
 Reviewed-By: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: use mootools shipped by debian, rather than the zoneminder included mootools.
 
---- a/web/skins/classic/includes/functions.php
-+++ b/web/skins/classic/includes/functions.php
+--- web/skins/classic/includes/functions.php
++++ web/skins/classic/includes/functions.php
 @@ -63,9 +63,8 @@
      }
  ?>
