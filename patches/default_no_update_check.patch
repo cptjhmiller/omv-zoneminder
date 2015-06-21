@@ -4,8 +4,8 @@ Author: Vagrant Cascadian <vagrant@debian.org>
 Description: Default to not checking for updated versions of ZoneMinder, as users should
              get updates through the package. Also prevents "phoning home" to zoneminder.com.
 
---- a/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
+--- scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
++++ scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
 @@ -1274,9 +1274,9 @@
  		category => "system",
  	},
