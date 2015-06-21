@@ -11,8 +11,8 @@ Description: fix FTBFS
  zm_mpeg.cpp:112:56: error: format not a string literal and no format arguments [-Werror=format-security]
  ~~~~
 
---- a/src/zm_mpeg.cpp
-+++ b/src/zm_mpeg.cpp
+--- src/zm_mpeg.cpp
++++ src/zm_mpeg.cpp
 @@ -108,9 +108,9 @@
  	}
  	
