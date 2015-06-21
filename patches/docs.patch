@@ -3,8 +3,8 @@ Forwarded: not-needed
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: unlink installation docs.
 
---- a/docs/index.rst
-+++ b/docs/index.rst
+--- docs/index.rst
++++ docs/index.rst
 @@ -3,18 +3,15 @@
  
  .. toctree::
@@ -24,8 +24,8 @@ Description: unlink installation docs.
  :doc:`userguide/index`
    Guide to setting up ZoneMinder for the first time and detailed guides for using the ZoneMinder front end.
  
---- a/docs/userguide/gettingstarted.rst
-+++ b/docs/userguide/gettingstarted.rst
+--- docs/userguide/gettingstarted.rst
++++ docs/userguide/gettingstarted.rst
 @@ -1,8 +1,8 @@
  Getting Started
  ===============
