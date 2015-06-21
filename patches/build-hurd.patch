@@ -3,8 +3,8 @@ Forwarded: https://github.com/ZoneMinder/ZoneMinder/pull/778
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: add PATH_MAX definitions (needed on GNU Hurd)
 
---- a/src/zm_stream.h
-+++ b/src/zm_stream.h
+--- src/zm_stream.h
++++ src/zm_stream.h
 @@ -25,8 +25,12 @@
  
  #include "zm.h"
@@ -18,8 +18,8 @@ Description: add PATH_MAX definitions (needed on GNU Hurd)
  
  #define TV_2_FLOAT( tv ) ( double((tv).tv_sec) + (double((tv).tv_usec) / 1000000.0) )
  
---- a/src/zm_file_camera.h
-+++ b/src/zm_file_camera.h
+--- src/zm_file_camera.h
++++ src/zm_file_camera.h
 @@ -25,8 +25,12 @@
  #include "zm_regexp.h"
  
