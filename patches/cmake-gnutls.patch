@@ -15,8 +15,8 @@ Description: fix FTBFS due to missing library "gnutls-openssl".
  src/CMakeFiles/nph-zms.dir/build.make:102: recipe for target 'src/nph-zms' failed
  ~~~~
 
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- CMakeLists.txt
++++ CMakeLists.txt
 @@ -224,9 +224,13 @@
  	set(optlibsnotfound "${optlibsnotfound} GCrypt")
  endif(GCRYPT_LIBRARIES)
