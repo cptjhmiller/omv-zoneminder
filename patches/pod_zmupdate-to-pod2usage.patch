@@ -7,8 +7,8 @@ Description: POD: zmupdate.pl converted to "pod2usage"
  info. Now `perldoc zmupdate.pl` shows expected information and we can even
  generate man page automatically with `pod2man zmupdate.pl`.
 
---- a/scripts/zmupdate.pl.in
-+++ b/scripts/zmupdate.pl.in
+--- scripts/zmupdate.pl.in
++++ scripts/zmupdate.pl.in
 @@ -19,13 +19,35 @@
  # along with this program; if not, write to the Free Software
  # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
