@@ -3,8 +3,8 @@ Forwarded: not-needed
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: disable OpenSSL detection
 
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- CMakeLists.txt
++++ CMakeLists.txt
 @@ -157,9 +157,9 @@
  	message(FATAL_ERROR "zm requires jpeg but it was not found on your system")
  endif(JPEG_FOUND)
