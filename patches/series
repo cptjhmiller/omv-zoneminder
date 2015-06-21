@@ -5,6 +5,8 @@ cmake-fix-confpath.patch
 cmake-gnutls.patch
 cmake-nossl.patch
 cmake.patch
+default-date-format.patch
+default_no_update_check.patch
 docs.patch
 fix-html-export.patch
 format-hardening.patch
