@@ -3,8 +3,8 @@ Forwarded: https://github.com/ZoneMinder/ZoneMinder/pull/759
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: POD added missing NAME sections
 
---- a/scripts/ZoneMinder/lib/ZoneMinder/Control/FI8608W_Y2k.pm
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/Control/FI8608W_Y2k.pm
+--- scripts/ZoneMinder/lib/ZoneMinder/Control/FI8608W_Y2k.pm
++++ scripts/ZoneMinder/lib/ZoneMinder/Control/FI8608W_Y2k.pm
 @@ -657,11 +657,11 @@
  1;
  __END__
@@ -19,8 +19,8 @@ Description: POD added missing NAME sections
  =head1 SYNOPSIS
  
    use ZoneMinder::Database;
---- a/scripts/ZoneMinder/lib/ZoneMinder/Control/FI8620_Y2k.pm
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/Control/FI8620_Y2k.pm
+--- scripts/ZoneMinder/lib/ZoneMinder/Control/FI8620_Y2k.pm
++++ scripts/ZoneMinder/lib/ZoneMinder/Control/FI8620_Y2k.pm
 @@ -733,11 +733,11 @@
  1;
  __END__
@@ -35,8 +35,8 @@ Description: POD added missing NAME sections
  =head1 SYNOPSIS
  
    use ZoneMinder::Database;
---- a/scripts/ZoneMinder/lib/ZoneMinder/Control/FI8908W.pm
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/Control/FI8908W.pm
+--- scripts/ZoneMinder/lib/ZoneMinder/Control/FI8908W.pm
++++ scripts/ZoneMinder/lib/ZoneMinder/Control/FI8908W.pm
 @@ -219,8 +219,12 @@
  
  __END__
@@ -50,8 +50,8 @@ Description: POD added missing NAME sections
  
  This module contains the implementation of the Foscam FI8908W / FI8918W IP camera control
  protocol.
---- a/scripts/ZoneMinder/lib/ZoneMinder/Control/FI9821W_Y2k.pm
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/Control/FI9821W_Y2k.pm
+--- scripts/ZoneMinder/lib/ZoneMinder/Control/FI9821W_Y2k.pm
++++ scripts/ZoneMinder/lib/ZoneMinder/Control/FI9821W_Y2k.pm
 @@ -695,11 +695,11 @@
  1;
  __END__
