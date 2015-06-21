@@ -7,8 +7,8 @@ Bug-Upstream: https://github.com/ZoneMinder/ZoneMinder/issues/506
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: fix HTML export with USE_DEEP_STORAGE.
 
---- a/web/skins/classic/includes/export_functions.php
-+++ b/web/skins/classic/includes/export_functions.php
+--- web/skins/classic/includes/export_functions.php
++++ web/skins/classic/includes/export_functions.php
 @@ -180,9 +180,9 @@
          </tr>
  <?php
