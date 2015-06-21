@@ -3,8 +3,8 @@ Forwarded: no
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: change default date format to region-neutral ISO notation with time zone.
 
---- a/web/skins/classic/views/monitor.php
-+++ b/web/skins/classic/views/monitor.php
+--- web/skins/classic/views/monitor.php
++++ web/skins/classic/views/monitor.php
 @@ -69,9 +69,9 @@
          'Width' => "320",
          'Height' => "240",
@@ -16,8 +16,8 @@ Description: change default date format to region-neutral ISO notation with time
          'LabelY' => 0,
          'ImageBufferCount' => 50,
          'WarmupCount' => 25,
---- a/web/skins/flat/views/monitor.php
-+++ b/web/skins/flat/views/monitor.php
+--- web/skins/flat/views/monitor.php
++++ web/skins/flat/views/monitor.php
 @@ -69,9 +69,9 @@
          'Width' => "320",
          'Height' => "240",
