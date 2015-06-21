@@ -1,19 +1,14 @@
-Last-Update: 2015-03-29
-Forwarded: no
-
---- a/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
-+++ b/scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
-@@ -407,11 +407,11 @@
- 		category => "images",
- 	},
- 	{
- 		name => "ZM_PATH_FFMPEG",
--		default => "@PATH_FFMPEG@",
-+		default => "/usr/bin/avconv",
- 		description => "Path to (optional) ffmpeg mpeg encoder",
--		help => "This path should point to where ffmpeg has been installed.",
-+		help => "This path should point to where ffmpeg has been installed.  Note that this installation expects avconv to satisfy ffmpeg functionality",
- 		requires => [ { name=>"ZM_OPT_FFMPEG", value=>"yes" } ],
- 		type => $types{abs_path},
- 		category => "images",
- 	},
+--- scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in  2015-06-21 13:18:33.473810219 +0100
++++ scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in  2015-06-21 18:53:04.774906785 +0100
+@@ -915,9 +915,9 @@
+     },
+     {
+         name        => "ZM_PATH_FFMPEG",
+-        default     => "@PATH_FFMPEG@",
++        default     => "/usr/bin/avconv",
+         description => "Path to (optional) ffmpeg mpeg encoder",
+-        help        => "This path should point to where ffmpeg has been installed.",
++        help        => "This path should point to where ffmpeg has been installed.  Note that this installation expects avconv to satisfy ffmpeg functionality",
+         requires    => [ { name=>"ZM_OPT_FFMPEG", value=>"yes" } ],
+         type        => $types{abs_path},
+         category    => "images",
