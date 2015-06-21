@@ -4,8 +4,8 @@ Origin: upstream
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: fix patch to "/etc/zm/zm.conf", needed for service start.
 
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- CMakeLists.txt
++++ CMakeLists.txt
 @@ -487,9 +487,8 @@
  
  # Some variables that zm expects
