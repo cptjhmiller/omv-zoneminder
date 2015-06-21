@@ -3,8 +3,8 @@ Forwarded: no
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: adapt apache2.conf to work out-of-the-box.
 
---- a/misc/apache.conf.in
-+++ b/misc/apache.conf.in
+--- misc/apache.conf.in
++++ misc/apache.conf.in
 @@ -13,19 +13,21 @@
          Options FollowSymLinks
          AllowOverride All
