@@ -5,8 +5,8 @@ Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: Use libv4l1-videodev.h from libv4l-dev (>= 0.8.3-1), as it is no
              longer shipped as linux/videodev.h in linux-libc-dev.
 
---- a/configure.ac
-+++ b/configure.ac
+--- configure.ac
++++ configure.ac
 @@ -353,9 +353,9 @@
  AC_CHECK_HEADERS(execinfo.h,,,)
  AC_CHECK_HEADERS(ucontext.h,,,)
@@ -18,8 +18,8 @@ Description: Use libv4l1-videodev.h from libv4l-dev (>= 0.8.3-1), as it is no
  if test "$ZM_HAS_V4L1" == "1" || test "$ZM_HAS_V4L2" == "1"; then
  AC_SUBST(ZM_HAS_V4L,1)
  else
---- a/src/zm_local_camera.h
-+++ b/src/zm_local_camera.h
+--- src/zm_local_camera.h
++++ src/zm_local_camera.h
 @@ -25,11 +25,11 @@
  #include "zm_image.h"
  
@@ -35,8 +35,8 @@ Description: Use libv4l1-videodev.h from libv4l-dev (>= 0.8.3-1), as it is no
  #include <linux/videodev2.h>
  #endif // HAVE_LINUX_VIDEODEV2_H
  
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- CMakeLists.txt
++++ CMakeLists.txt
 @@ -95,9 +95,9 @@
  # This is required to enable searching in lib64 (if exists), do not change
  set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS ON)
@@ -72,8 +72,8 @@ Description: Use libv4l1-videodev.h from libv4l-dev (>= 0.8.3-1), as it is no
  set(ZM_PCRE 0)
  if(HAVE_LIBPCRE AND HAVE_PCRE_H)
  	set(ZM_PCRE 1)
---- a/zoneminder-config.cmake
-+++ b/zoneminder-config.cmake
+--- zoneminder-config.cmake
++++ zoneminder-config.cmake
 @@ -3,9 +3,8 @@
  
  /* This file is used by cmake to create config.h for ZM */
