@@ -4,8 +4,8 @@ Bug-Upstream: https://github.com/ZoneMinder/ZoneMinder/issues/769
 Author: Dmitry Smirnov <onlyjob@member.fsf.org>
 Description: fix Perl modules' location
 
---- a/scripts/ZoneMinder/CMakeLists.txt
-+++ b/scripts/ZoneMinder/CMakeLists.txt
+--- scripts/ZoneMinder/CMakeLists.txt
++++ scripts/ZoneMinder/CMakeLists.txt
 @@ -23,11 +23,16 @@
  	set(MAKEMAKER_NOECHO_COMMAND "NOECHO=\"1>/dev/null\"")
  endif(CMAKE_VERBOSE_MAKEFILE)
