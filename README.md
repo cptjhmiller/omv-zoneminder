@@ -35,6 +35,7 @@ omv-zoneminder
     exit
     cd /zoneminder/ZoneMinder
     git clone https://github.com/cptjhmiller/omv-zoneminder.git -b testing /zoneminder/ZoneMinder/debian
+    debian/appy_patches.sh
     dpkg-checkbuilddeps
 #apt-get any missing packages
 
