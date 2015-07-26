@@ -46,20 +46,21 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}
         ,libmodule-load-conditional-perl
         ,libnet-sftp-foreign-perl
 #       ,libzoneminder-perl (= ${source:Version})
-          ,libarchive-zip-perl
-          ,libdbd-mysql-perl
-          ,libdevice-serialport-perl
-          ,libimage-info-perl
-          ,libjson-any-perl
-          ,libsys-mmap-perl [!hurd-any]
-          ,liburi-encode-perl
-          ,libwww-perl
+        ,libarchive-zip-perl
+        ,libdbd-mysql-perl
+        ,libdevice-serialport-perl
+        ,libimage-info-perl
+        ,libjson-any-perl
+        ,libsys-mmap-perl [!hurd-any]
+        ,liburi-encode-perl
+        ,libwww-perl
         ,mysql-client | virtual-mysql-client
         ,perl-modules
         ,php5-mysqlnd
         ,php5-fpm
         ,fcgiwrap
         ,policykit-1
+        ,php5-gd
         ,rsyslog | system-log-daemon
         ,zip
 Recommends: ${misc:Recommends}
