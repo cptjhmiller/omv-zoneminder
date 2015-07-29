@@ -51,7 +51,6 @@ dh_fixperms
 override_dh_strip dh_strip
 dh_strip
 dh_makeshlibs
-dh_shlibdeps
 dh_installdeb
 dh_gencontrol
 dh_md5sums

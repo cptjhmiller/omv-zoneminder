@@ -11,7 +11,10 @@ omv-zoneminder
 
     wget --trust-server-names http://sourceforge.net/projects/libjpeg-turbo/files/1.3.90%20%281.4%20beta1%29/libjpeg-turbo-official_1.3.90_amd64.deb/download
     dpkg -i libjpeg-turbo-official_1.3.90_amd64.deb
-    echo "/opt/libjpeg-turbo/lib64" > /etc/ld.so.conf.d/libjpeg-turbo.conf
+    echo "/opt/libjpeg-turbo/lib64" > /etc/ld.so.conf.d/libjpeg-turbo.conf && \
+    echo "/usr/local/lib" > /etc/ld.so.conf.d/ffmpeg.conf && \
+    echo "LD_LIBRARY_PATH=/usr/local/lib:/opt/libjpeg-turbo/lib64:$LD_LIBRARY_PATH" >> /etc/bash.bashrc && \
+    echo "export LD_LIBRARY_PATH" >> /etc/bash.bashrc
     ldconfig
 
 # Install perl modules
@@ -34,7 +37,7 @@ omv-zoneminder
     install CPAN
     exit
     cd /zoneminder/ZoneMinder
-    git clone https://github.com/cptjhmiller/omv-zoneminder.git -b testing /zoneminder/ZoneMinder/debian
+    git clone https://github.com/cptjhmiller/omv-zoneminder.git -b dev /zoneminder/ZoneMinder/debian
     debian/appy_patches.sh
     dpkg-checkbuilddeps
 #apt-get any missing packages
