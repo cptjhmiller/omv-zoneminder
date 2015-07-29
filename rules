@@ -6,6 +6,7 @@
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export DEB_LDFLAGS_MAINT_APPEND += -Wl,--as-needed
+export CXXFLAGS = -DHAVE_LIBCRYPTO -I/opt/libjpeg-turbo/include -L/opt/libjpeg-turbo/lib64 -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -pipe
 
 ifeq ($(DEB_BUILD_ARCH_OS),hurd)
 ARGS:= -DZM_NO_MMAP=ON

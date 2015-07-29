@@ -1,5 +1,5 @@
---- scripts/ZoneMinder/CMakeLists.txt	2015-06-21 19:33:11.882930369 +0100
-+++ scripts/ZoneMinder/CMakeLists_new.txt	2015-06-21 19:54:25.382942846 +0100
+--- scripts/ZoneMinder/CMakeLists.txt
++++ scripts/ZoneMinder/CMakeLists.txt
 @@ -24,10 +24,15 @@
  endif(CMAKE_VERBOSE_MAKEFILE)
  

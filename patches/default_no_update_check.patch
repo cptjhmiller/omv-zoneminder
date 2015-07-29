@@ -1,5 +1,5 @@
---- scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in	2015-06-21 19:38:54.802933728 +0100
-+++ scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm_new.in	2015-06-21 20:02:16.174947458 +0100
+--- scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
++++ scripts/ZoneMinder/lib/ZoneMinder/ConfigData.pm.in
 @@ -2644,7 +2644,7 @@
      },
      {
