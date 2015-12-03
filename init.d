@@ -23,7 +23,9 @@ command="$ZM_PATH_BIN/zmpkg.pl"
 
 start() {
 	echo -n "Starting $prog: "
-	mkdir -p $RUNDIR $TMPDIR && chown www-data:www-data $RUNDIR $TMPDIR
+	export TZ=:/etc/localtimeexport TZ=:/etc/localtime
+	mkdir -p $RUNDIR $TMPDIR && chown www-data:www-data $RUNDIR
+        mkdir -p $RUNDIR $TMPDIR && chown www-data:www-data $TMPDIR
 	$command start
 	RETVAL=$?
 	[ $RETVAL = 0 ] && echo success || echo failure

@@ -4,64 +4,71 @@ set -e
 
 if [ "$1" = "configure" ]; then
     cpan install URI::Escape >/dev/null 2>&1
-	if [ -e "/etc/init.d/mysql" ]; then 
-		#
-		# Get mysql started if it isn't
-		#
-		if ! $(/etc/init.d/mysql status >/dev/null 2>&1); then
-				invoke-rc.d mysql start
-		fi
-		if $(/etc/init.d/mysql status >/dev/null 2>&1); then
-			mysqladmin --defaults-file=/etc/mysql/debian.cnf -f reload
-			# test if database if already present...
-			if ! $(echo quit | mysql --defaults-file=/etc/mysql/debian.cnf zm > /dev/null 2> /dev/null) ; then
-				cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/mysql/debian.cnf
-				echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/debian.cnf mysql
-			fi
+        if [ -e /etc/nginx/sites-enabled/nginx.conf ]; then
+            rm -Rf /etc/nginx/sites-enabled/nginx.conf
+        fi
 
-			invoke-rc.d zoneminder stop || true
-			zmupdate.pl --nointeractive
+        if [ -f /etc/nginx/sites-available/nginx.conf ]; then
+            rm -Rf /etc/nginx/sites-available/nginx.conf
+        fi
 
-		else
-			echo 'NOTE: mysql not running, please start mysql and run dpkg-reconfigure zoneminder when it is running.'
-		fi
-	else 
-		echo 'mysql not found, assuming remote server.'
-	fi
-	chown www-data:www-data /var/log/zm
-	chown www-data:www-data /var/lib/zm/
-	if [ -z "$2" ]; then
-			chown www-data:www-data -R /var/cache/zoneminder
-	fi
+        if [ -e "/etc/init.d/mysql" ]; then
+            #
+            # Get mysql started if it isn't
+            #
+            if ! $(/etc/init.d/mysql status >/dev/null 2>&1); then
+                invoke-rc.d mysql start
+            fi
+            if $(/etc/init.d/mysql status >/dev/null 2>&1); then
+                mysqladmin --defaults-file=/etc/mysql/debian.cnf -f reload
+                # test if database if already present...
+                if ! $(echo quit | mysql --defaults-file=/etc/mysql/debian.cnf zm > /dev/null 2> /dev/null) ; then
+                    cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/mysql/debian.cnf
+                    echo 'grant lock tables, alter,select,insert,update,delete,create,index on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/debian.cnf mysql
+                 fi
+                invoke-rc.d zoneminder stop || true
+                zmupdate.pl --nointeractive
+            else
+                echo 'NOTE: mysql not running, please start mysql and run dpkg-reconfigure zoneminder when it is running.'
+            fi
+        else
+            echo 'mysql not found, assuming remote server.'
+        fi
+        chown www-data:www-data /var/log/zm
+        chown www-data:www-data /var/lib/zm/
+        chown www-data:www-data -R /usr/share/zoneminder
+        if [ -z "$2" ]; then
+            chown www-data:www-data -R /var/cache/zoneminder
+        fi
 
-	if [ ! -f /etc/nginx/sites-available/nginx.conf ]; then
-			cp /etc/zm/nginx.conf /etc/nginx/sites-available/nginx.conf
-	fi
+        #if [ ! -f /etc/nginx/openmediavault-webgui.d/zoneminder.conf ]; then
+        #    cp /etc/zm/zoneminder.conf /etc/nginx/openmediavault-webgui.d/zoneminder.conf
+        #fi
 
-	if [ ! -e /etc/nginx/sites-enabled/nginx.conf ]; then
-			ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
-	fi
-
-	if ! grep -q "^zms-inetd" /etc/services; then
-			echo "zms-inetd       4085/tcp                        # TCP port service zoneminder" >> /etc/services
-	fi
-
-	if [ ! -e /usr/local/bin/zms-inetd ]; then
-			if [ ! -d /usr/local/bin ]; then
-                mkdir -p /usr/local/bin
-			fi
-            cp /etc/zm/zms-inetd.conf /usr/local/bin/zms-inetd
-            chown www-data:www-data /usr/local/bin/zms-inetd
-            chmod 755 /usr/local/bin/zms-inetd
-    fi
-
-	if [ ! -f /etc/php5/fpm/pool.d/zoneminder-webgui.conf ]; then
-			cp /etc/zm/zoneminder-webgui.conf /etc/php5/fpm/pool.d/zoneminder-webgui.conf
+        if [ ! -e /etc/nginx/openmediavault-webgui.d/zoneminder.conf ]; then
+            cp /etc/zm/zoneminder.conf /etc/nginx/openmediavault-webgui.d/zoneminder.conf
 	fi
 
-	if [ ! -f /etc/xinetd.d/zms ]; then
-			cp /etc/zm/zms.conf /etc/xinetd.d/zms
-	fi
+        #if ! grep -q "^zms-inetd" /etc/services; then
+        #    echo "zms-inetd       4085/tcp                        # TCP port service zoneminder" >> /etc/services
+        #fi
+
+        #if [ ! -e /usr/local/bin/zms-inetd ]; then
+        #    if [ ! -d /usr/local/bin ]; then
+        #        mkdir -p /usr/local/bin
+        #    fi
+        #    cp /etc/zm/zms-inetd.conf /usr/local/bin/zms-inetd
+        #    chown www-data:www-data /usr/local/bin/zms-inetd
+        #    chmod 755 /usr/local/bin/zms-inetd
+        #fi
+
+        #if [ ! -f /etc/php5/fpm/pool.d/zoneminder-webgui.conf ]; then
+        #    cp /etc/zm/zoneminder-webgui.conf /etc/php5/fpm/pool.d/zoneminder-webgui.conf
+        #fi
+
+        #if [ ! -f /etc/xinetd.d/zms ]; then
+        #    cp /etc/zm/zms.conf /etc/xinetd.d/zms
+        #fi
 
 	if [ ! -f /usr/share/zoneminder/cambozola.jar ]; then
 			cp /etc/zm/cambozola.conf /usr/share/zoneminder/cambozola.jar
@@ -71,25 +78,26 @@ if [ "$1" = "configure" ]; then
 			sudo adduser www-data video
 	fi
 
-	service php5-fpm restart
-	service xinetd restart
-	service nginx reload
+        service php5-fpm restart
+        #service xinetd restart
+        service nginx reload
 fi
 # Ensure zoneminder is stopped...
 if [ -x "/etc/init.d/zoneminder" ]; then
-        if invoke-rc.d zoneminder status ; then
-                invoke-rc.d zoneminder stop || exit $?
-        fi
+    if invoke-rc.d zoneminder status ; then
+        invoke-rc.d zoneminder stop || exit $?
+    fi
 fi
 
 if [ "$1" = "configure" ]; then
-	if [ -z "$2" ]; then
-		chown www-data:www-data /var/log/zm
-		chown www-data:www-data /var/lib/zm/
-		chown www-data:www-data -R /var/cache/zoneminder
+    if [ -z "$2" ]; then
+        chown www-data:www-data /var/log/zm
+        chown www-data:www-data /var/lib/zm/
+        chown www-data:www-data -R /var/cache/zoneminder
     else
-		chown www-data:www-data /var/log/zm
-		zmupdate.pl
-	fi
+        chown www-data:www-data /var/log/zm
+        echo 'grant lock tables, create, index, alter on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/debian.cnf mysql
+        zmupdate.pl
+    fi
 fi
 #DEBHELPER#
