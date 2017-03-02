@@ -1,0 +1,48 @@
+#! /bin/sh
+# set -e # to be reinstated later
+
+if [ "$1" = "purge" ]; then
+    echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/mysql/debian.cnf mysql
+    echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/mysql/debian.cnf mysql
+    mysqladmin --defaults-file=/etc/mysql/debian.cnf -f drop zm
+
+    if [ -f /usr/share/zoneminder/cambozola.jar ]; then
+        rm -Rf /usr/share/zoneminder/cambozola.jar
+    fi
+
+    if [ -e /etc/nginx/sites-enabled/nginx.conf ]; then
+        rm -Rf /etc/nginx/sites-enabled/nginx.conf
+    fi
+
+    if [ -f /etc/nginx/sites-available/nginx.conf ]; then
+        rm -Rf /etc/nginx/sites-available/nginx.conf
+    fi
+
+    if [ -f /usr/local/bin/zms-inetd ]; then
+        rm -Rf /usr/local/bin/zms-inetd
+    fi
+
+    if [ -f /etc/php5/fpm/pool.d/zoneminder-webgui.conf ]; then
+        rm -Rf /etc/php5/fpm/pool.d/zoneminder-webgui.conf
+    fi
+
+    if [ -f /etc/xinetd.d/zms ]; then
+        rm -Rf /etc/xinetd.d/zms
+    fi
+
+    if groups www-data | grep -sq '\video\b'; then
+        sudo deluser www-data video
+    fi
+
+    #Renmove service string
+    sed -i '/^zms-inetd/d' /etc/services
+
+    #Restart serviceses
+    service nginx reload
+fi
+# Automatically added by dh_installinit
+if [ "$1" = "purge" ] ; then
+        update-rc.d zoneminder remove >/dev/null
+fi
+# End automatically added section
+
