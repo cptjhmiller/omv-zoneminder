@@ -43,3 +43,10 @@ omv-zoneminder
 #build the package
 
     dpkg-buildpackage -uc -us
+
+
+
+# TESTING
+    wget https://raw.githubusercontent.com/cptjhmiller/omv-zoneminder/master/do_debian_package.sh
+    chmod a+x do_debian_package.sh
+    ./do_debian_package.sh `lsb_release -a 2>/dev/null | grep Codename | awk '{print $2}'`  `date +%Y%m%d`01 local master
