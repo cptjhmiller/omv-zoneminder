@@ -45,9 +45,9 @@ cd zoneminder_$VERSION-$DISTRO-$SNAPSHOT.orig
 git submodule init
 git submodule update --init --recursive
 
-#git clone https://github.com/cptjhmiller/omv-zoneminder.git ./debian
+git clone https://github.com/cptjhmiller/omv-zoneminder.git ./debian
 
-#for i in ./debian/patches/*.patch; do patch -p1 < $i; done
+for i in ./debian/patches/*.patch; do patch -p1 < $i; done
 #mv zoneminder_$VERSION-$DISTRO-$SNAPSHOT.orig zoneminder_release
 #exit
 
@@ -87,9 +87,6 @@ fi;
 
 cd ../
 
-#read -p "Do you want to keep the checked out version of Zoneminder (incase you want to modify it later) [y/N]"
-#[[ $REPLY == [yY] ]] && { mv zoneminder_$VERSION-$DISTRO-$SNAPSHOT.orig zoneminder_release; echo "The checked out copy is preserved in zoneminder_release"; } || { rm -fr zoneminder_$VERSION-$DISTRO-$SNAPSHOT.orig; echo "The checked out copy has been deleted"; }
+read -p "Do you want to keep the checked out version of Zoneminder (incase you want to modify it later) [y/N]"
+[[ $REPLY == [yY] ]] && { mv zoneminder_$VERSION-$DISTRO-$SNAPSHOT.orig zoneminder_release; echo "The checked out copy is preserved in zoneminder_release"; } || { rm -fr zoneminder_$VERSION-$DISTRO-$SNAPSHOT.orig; echo "The checked out copy has been deleted"; }
 echo "Done!"
-
-
-

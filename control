@@ -69,8 +69,8 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, ${perl:Depends}
         ,zip
         ,php5-fpm
         ,fcgiwrap
+        ,mysql-server | virtual-mysql-server
 Recommends: ${misc:Recommends}
-           ,mysql-server | virtual-mysql-server
            ,zoneminder-doc (>= ${source:Version})
            ,ffmpeg
 Suggests: logrotate
